@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 {% block body %}
     <h1>Bem vindo ao Polls</h1>
-    <ul>
+    <ul class="list-group">
     {% for q in questions %}
-        <li>{{ q.question_text }}</li>
+        <li class="list-group-item">
+            <a href="{% url 'exibir' q.id %}">{{ q.question_text }}</a>
+            <a href="{% url 'manage' q.id %}" class="btn btn-default" role="button">Gerenciar</a>
+            {% if q.closed %}
+                <a href="{% url 'result' q.id %}" class="btn btn-default" role="button">Resultado</a>
+            {% else %}
+                <a href="{% url 'vote' q.id %}" class="btn btn-default" role="button">Votar</a>
+            {% endif %}
+        </li>
     {% endfor %}
     </ul>
 {% endblock %}

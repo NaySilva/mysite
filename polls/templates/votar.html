@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>Resultado</h1>
+    <div class="panel panel-default">
+      <div class="panel-heading">{{ question.question_text }}</div>
+      <div class="panel-body">
+          {% for choice in choices %}
+            <a href="{% url 'votar' choice.id %}" class="btn btn-default btn-block" role="button">{{ choice.choice_text }}</a>
+          {% endfor %}
+      </div>
+    </div>
+    </div>
+{% endblock %}

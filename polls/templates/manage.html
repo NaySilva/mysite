@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>Questão</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                {{ question.question_text }}
+                <a href="{% url 'mudar_status' question.id %}" class="btn btn-default confirmation" role="button">
+                    {% if question.closed %}
+                        Abrir questão
+                    {% else %}
+                        Fechar questão
+                    {% endif %}
+                </a>
+            </h3>
+        </div>
+        <ul class="list-group">
+            {% for choice in choices %}
+                <li class="list-group-item">
+                    {{ choice.choice_text }}
+                    <a href="{% url 'remove' choice.id %}" class="confirmation">Remover</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+    var elems = document.getElementsByClassName('confirmation');
+    var confirmIt = function (e) {
+        if (!confirm('Você tem certeza?')) e.preventDefault();
+    };
+    for (var i = 0, l = elems.length; i < l; i++) {
+        elems[i].addEventListener('click', confirmIt, false);
+    }
+    </script>
+{% endblock %}

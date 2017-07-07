@@ -11,4 +11,9 @@
             {% endfor %}
         </ul>
     </div>
+    {% if question.closed %}
+        <a href="{% url 'result' question.id %}" class="btn btn-default" role="button">Resultado</a>
+    {% else %}
+        <a href="{% url 'vote' question.id %}" class="btn btn-default" role="button">Votar</a>
+    {% endif %}
 {% endblock %}

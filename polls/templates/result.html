@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>Resultado</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ question.question_text }}</h3>
+        </div>
+        <ul class="list-group">
+            {% for choice in choices %}
+                <li class="list-group-item">{{ choice.choice_text }} - {{ choice.votes }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
