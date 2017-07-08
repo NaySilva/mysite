@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block body %}
     <h1>Questão</h1>
-    <div class="panel panel-default">
+    <div class="panel panel-info">
         <div class="panel-heading">
             <h3 class="panel-title">
                 {{ question.question_text }}
-                <a href="{% url 'mudar_status' question.id %}" class="btn btn-default confirmation" role="button">
+                <a href="{% url 'mudar_status' question.id %}" class="pull-right confirmation" role="button">
                     {% if question.closed %}
                         Abrir questão
                     {% else %}
@@ -18,11 +18,13 @@
             {% for choice in choices %}
                 <li class="list-group-item">
                     {{ choice.choice_text }}
-                    <a href="{% url 'remove' choice.id %}" class="confirmation">Remover</a>
+                    <a href="{% url 'remove' choice.id %}" class="confirmation pull-right">Remover</a>
                 </li>
             {% endfor %}
         </ul>
     </div>
+    <a href="{% url 'index' %}" class="btn btn-info" role="button">Voltar</a>
+
 
     <script type="text/javascript">
     var elems = document.getElementsByClassName('confirmation');

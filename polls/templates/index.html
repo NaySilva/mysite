@@ -4,13 +4,8 @@
     <ul class="list-group">
     {% for q in questions %}
         <li class="list-group-item">
-            <a href="{% url 'exibir' q.id %}">{{ q.question_text }}</a>
-            <a href="{% url 'manage' q.id %}" class="btn btn-default" role="button">Gerenciar</a>
-            {% if q.closed %}
-                <a href="{% url 'result' q.id %}" class="btn btn-default" role="button">Resultado</a>
-            {% else %}
-                <a href="{% url 'vote' q.id %}" class="btn btn-default" role="button">Votar</a>
-            {% endif %}
+            <a href="{% url 'exibir' q.id %}" class="btn">{{ q.question_text }}</a>
+            <a href="{% url 'manage' q.id %}" class="btn btn-info pull-right" role="button">Gerenciar</a>
         </li>
     {% endfor %}
     </ul>
